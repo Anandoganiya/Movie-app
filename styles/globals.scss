@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Bellefair&family=Open+Sans&family=Poppins&display=swap');
+// fonts
+$font-BelleFair: 'Bellefair', serif;
+$font-OpenSans: 'Open Sans', sans-serif;
+$font-Poppins: 'Poppins', sans-serif;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family:$font-Poppins;
+  font-size: 100%;
+  background-color: #16003B;
+}
+
+*,::after,::before {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+ul{
+  list-style-type: none;
+}

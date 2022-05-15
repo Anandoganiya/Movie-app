@@ -1,0 +1,19 @@
+.movieLayout{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    // border: 1px solid black;
+    margin-bottom: 6rem;
+    @media (max-width:500px){
+        margin-left: 1rem;
+    }
+}
+.title{
+    margin-block: .5rem;
+    width: 100%;
+    font-weight: 500;
+    font-size: 1.4rem;
+    text-align: center;
+    color: white;
+}

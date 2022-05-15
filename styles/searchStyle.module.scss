@@ -1,0 +1,14 @@
+.types{
+    color: white;
+    display: flex;
+    .type{
+        padding: 1rem;
+        cursor: pointer;
+    }
+    .type:hover{
+        background-color: gray;
+    }
+    .primary{
+        background-color: rebeccapurple;
+    }
+}

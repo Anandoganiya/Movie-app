@@ -1,0 +1,21 @@
+.searchContainer{
+    display: flex;
+    margin:0 auto;
+}
+.searchForm {
+   display: flex;
+}
+.searchBar{
+    outline: none;
+    width: 20rem;
+    padding: .7rem;
+}
+
+.searchIcon{
+    border-bottom-right-radius:25%;
+    border-top-right-radius:25%;
+    outline: none;
+    border: none;
+    padding: .8rem;
+    background-color: rgb(68, 42, 212);
+}

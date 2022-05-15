@@ -1,0 +1,16 @@
+.container{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+}
+.paginate {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  color: white;
+  cursor: pointer;
+  @media (max-width: 500px) {
+    width: 100%;
+  }
+}
