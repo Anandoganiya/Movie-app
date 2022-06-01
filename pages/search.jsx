@@ -6,7 +6,7 @@ import pagination from '../styles/pagination.module.scss';
 import { SingleMovie } from '../components';
 import ReactPaginate from 'react-paginate';
 
-const Search = () => {
+const Search = ({setToggleModal,toggleModal,setContent}) => {
   const {query} = useRouter();
   const [type,setType] = useState(0)
   const [trending,setTrending] = useState(null);
@@ -43,10 +43,14 @@ const Search = () => {
         return <SingleMovie key={movie.id}
          title={movie.title}
          backdrop_path={movie.backdrop_path}
-         media_type={movie.media_type}
+         media_type={type ? 'tv':'movie'}
          poster_path={movie.poster_path}
          release_date={movie.release_date}
          vote_average={movie.vote_average}
+         setToggleModal={setToggleModal}
+         toggleModal={toggleModal}
+         setContent={setContent}
+         id={movie.id}
          />;
       })
     }

@@ -5,7 +5,7 @@ import { SingleMovie,Genre } from '../components';
 import ReactPaginate from 'react-paginate';
 import useGenre from '../hooks/useGenre';
 
-const Movies = () => {
+const Movies = ({toggleModal,setToggleModal,setContent}) => {
   const [trending,setTrending] = useState(null);
   const [pageNumber,setPageNumber] = useState(1);
   const [totalPages,setTotalPages] = useState(0);
@@ -47,6 +47,10 @@ const Movies = () => {
          poster_path={series.poster_path}
          release_date={series.first_air_date}
          vote_average={series.vote_average}
+         setToggleModal={setToggleModal}
+         toggleModal={toggleModal}
+         id={series.id}
+         setContent={setContent}
          />;
       })
     }

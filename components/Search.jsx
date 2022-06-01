@@ -16,9 +16,6 @@ const Search = () => {
          className={SearchStyle.searchIcon}>
           <IoMdSearch  />
         </button>
-        {/* <Link href='/search' className={SearchStyle.searchIcon}>
-          <IoMdSearch  />
-        </Link> */}
     </form>
     </div>
   )

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Image } from 'next/image'
 import { img_300 } from '../config/config'
 import Movie from '../styles/Movie.module.scss'
 const SingleMovie = ({
@@ -8,11 +7,18 @@ const SingleMovie = ({
     backdrop_path,
     media_type,
     release_date,
-    vote_average    
+    vote_average,
+    setToggleModal,
+    toggleModal,
+    setContent,
+    id    
 }) => {
+  const handleContent = (media_type,id)=>{
+    setContent({media_type,id})
+    setToggleModal(!toggleModal)
+  }
   return (
-    <div className={Movie.movieContent}>
-        {/* <Image src={`${img_300}/${poster_path}`} width={50} height={200}></Image> */}
+    <div className={Movie.movieContent} onClick={()=>{handleContent(media_type,id)}}>
         <img src={`${img_300}/${poster_path}`} width={200} height={300}></img>
         <div className={Movie.movieDetail}>
             <div>{title}</div>

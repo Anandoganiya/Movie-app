@@ -4,7 +4,8 @@ import TrendingStyle from '../styles/TrendingStyle.module.scss'
 import pagination from '../styles/pagination.module.scss'
 import ReactPaginate from 'react-paginate';
 
-export default function Home() {
+export default function Home({toggleModal,setToggleModal,setContent}) {
+  // console.log(toggleModal);
   const [trending,setTrending] = useState(null);
   const [pageNumber,setPageNumber] = useState(1);
   
@@ -29,11 +30,15 @@ export default function Home() {
         trending && trending.map(movie=>{
           return <SingleMovie key={movie.id}
            title={movie.title}
+           id={movie.id}
            backdrop_path={movie.backdrop_path}
            media_type={movie.media_type}
            poster_path={movie.poster_path}
            release_date={movie.release_date}
            vote_average={movie.vote_average}
+           setToggleModal={setToggleModal}
+           toggleModal={toggleModal}
+           setContent={setContent}
            />;
         })
       }

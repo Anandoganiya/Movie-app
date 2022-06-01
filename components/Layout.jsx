@@ -1,9 +1,11 @@
-import React from 'react'
+import React,{cloneElement,useState} from 'react'
 import Head from 'next/head'
 import Header from './Header'
 import NavBar from './NavBar'
-
+import  Modal  from './Modal';
 const Layout = ({children}) => {
+  const [toggleModal,setToggleModal] = useState(false);
+  const [content,setContent] = useState({});
   return (
     <div>
         <Head>
@@ -12,8 +14,9 @@ const Layout = ({children}) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header/>
-        {children}
+        {cloneElement(children,{toggleModal,setToggleModal,setContent})}
       <NavBar/>
+      {toggleModal?<Modal content={content} setToggleModal={setToggleModal} toggleModal={toggleModal}/>:null}
     </div>
   )
 }
