@@ -2,14 +2,18 @@ import React,{useEffect,useState} from 'react'
 import ModalStyle from '../styles/Modal.module.scss'
 import {MdCancel} from 'react-icons/md';
 import { img_300 } from '../config/config'
-
+import  ClipLoader from 'react-spinners/ClipLoader'
 
 const Modal = ({content,setToggleModal,toggleModal}) => {
   const [modalContent,setModalContent] = useState({})
+  const [loading,setLoading] = useState(true)
   useEffect(()=>{
+      setLoading(true)
       const fetchData = async () =>{
         const res = await fetch(`https://api.themoviedb.org/3/${content.media_type}/${content.id}?api_key=5337a3932c7f5952d92e1ea0248df79e&language=en-US`)
-        setModalContent(await res.json())
+        const resJson = await res.json()
+        setModalContent(resJson)
+        setLoading(false)
     }
     if(content){
         fetchData()
@@ -27,7 +31,11 @@ const Modal = ({content,setToggleModal,toggleModal}) => {
                 <div className={ModalStyle.cross}>
                     <MdCancel style={{fontSize:'1.5rem'}}/>
                 </div>
-                {modalContent?
+                { modalContent && loading?
+                <div style={{textAlign:'center'}}>
+                  <ClipLoader ></ClipLoader>
+                </div>
+                :
                 <div>
                     <div className={ModalStyle.poster}>
                       <img src={`${img_300}/${modalContent.poster_path}`} width={200} height={300}></img>
@@ -44,14 +52,18 @@ const Modal = ({content,setToggleModal,toggleModal}) => {
                       </div>
                     </div>
                 </div>
-                :null}
+                }
                 <div className={ModalStyle.title}>Movie - {modalContent.original_title}</div>
             </div> : 
                <div className={ModalStyle.container} onClick={()=>setToggleModal(!toggleModal)}>
                  <div className={ModalStyle.cross}>
                     <MdCancel style={{fontSize:'1.5rem'}}/>
                 </div>
-               {modalContent?
+               {modalContent && loading?
+                <div style={{textAlign:'center'}}>
+                  <ClipLoader ></ClipLoader>
+                </div>
+                :
                <div>
                    <div className={ModalStyle.poster}>
                      <img src={`${img_300}/${modalContent.poster_path}`} width={200} height={300}></img>
@@ -68,7 +80,7 @@ const Modal = ({content,setToggleModal,toggleModal}) => {
                       </div>
                    </div>
                </div>
-               :null}
+               }
                <div className={ModalStyle.title}>TV - {modalContent.original_name}</div>
            </div>
     }
