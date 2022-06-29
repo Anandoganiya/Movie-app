@@ -1,16 +1,16 @@
-.navbar{
-    display: flex;
-    align-items: center;
-    background-color: #541690;
-    padding: 1rem;
-    width: 100%;
-    @media (max-width:500px) {
-        display: block;
-    }
-    .logo{
-        font-weight: 700;
-        font-size: 1.2rem;
-        color: #6A67CE;
-        cursor: pointer;
-    }
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: #541690;
+  padding: 1rem;
+  width: 100%;
+  @media (max-width: 500px) {
+    display: block;
+  }
+  .logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #6a67ce;
+    cursor: pointer;
+  }
 }
