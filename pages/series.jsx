@@ -4,9 +4,9 @@ import pagination from "../styles/pagination.module.scss";
 import { SingleMovie, Genre } from "../components";
 import ReactPaginate from "react-paginate";
 import useGenre from "../hooks/useGenre";
-
+import ClipLoader from "react-spinners/ClipLoader";
 const Movies = ({ toggleModal, setToggleModal, setContent }) => {
-  const [trending, setTrending] = useState(null);
+  const [trending, setTrending] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [genre, setGenre] = useState([]);
@@ -40,7 +40,55 @@ const Movies = ({ toggleModal, setToggleModal, setContent }) => {
         selectedGenre={selectedGenre}
         setPageNumber={setPageNumber}
       />
-      {trending &&
+      {!trending.length ? (
+        <div
+          style={{
+            display: "flex",
+            width: "100%",
+            justifyContent: "center",
+            marginTop: "1rem",
+          }}
+        >
+          <ClipLoader></ClipLoader>
+        </div>
+      ) : (
+        trending.map((series) => {
+          return (
+            <SingleMovie
+              key={series.id}
+              title={series.original_name}
+              backdrop_path={series.backdrop_path}
+              media_type={"tv"}
+              poster_path={series.poster_path}
+              release_date={series.first_air_date}
+              vote_average={series.vote_average}
+              setToggleModal={setToggleModal}
+              toggleModal={toggleModal}
+              id={series.id}
+              setContent={setContent}
+            />
+          );
+        })
+      )}
+      {trending.length ? (
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "2rem",
+          }}
+        >
+          <ReactPaginate
+            className={pagination.paginate}
+            previousLabel={"< previous"}
+            nextLabel={"next >"}
+            pageCount={totalPages}
+            onPageChange={pageChange}
+          />
+        </div>
+      ) : null}
+      {/* {trending &&
         trending.map((series) => {
           return (
             <SingleMovie
@@ -75,7 +123,7 @@ const Movies = ({ toggleModal, setToggleModal, setContent }) => {
             onPageChange={pageChange}
           />
         </div>
-      ) : null}
+      ) : null} */}
     </main>
   );
 };

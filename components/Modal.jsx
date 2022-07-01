@@ -64,7 +64,10 @@ const Modal = ({ content, setToggleModal, toggleModal }) => {
                     height={300}
                   ></img>
                   <div className={ModalStyle.desc}>
-                    <span>Description</span>
+                    <div className={ModalStyle.title}>
+                      Movie : <span>{modalContent.original_title}</span>
+                    </div>
+                    <span>Description :</span>
                     <p>{modalContent.overview}</p>
                     <p>
                       <span style={{ fontWeight: "600" }}> Duration</span> :{" "}
@@ -95,15 +98,16 @@ const Modal = ({ content, setToggleModal, toggleModal }) => {
                           );
                         })
                       : null}
-                    <div>Ratings : {modalContent.vote_average}</div>
-                    <div>Release Date : {modalContent.release_date}</div>
+                    <div className={ModalStyle.ratings}>
+                      Ratings : <p> {modalContent.vote_average}</p>
+                    </div>
+                    <div className={ModalStyle.date}>
+                      Release Date : <p> {modalContent.release_date}</p>
+                    </div>
                   </div>
                 </div>
               </div>
             )}
-            <div className={ModalStyle.title}>
-              Movie - {modalContent.original_title}
-            </div>
           </div>
         </div>
       ) : (
@@ -132,9 +136,11 @@ const Modal = ({ content, setToggleModal, toggleModal }) => {
                     height={300}
                   ></img>
                   <div className={ModalStyle.desc}>
-                    <span>Description</span>
+                    <div className={ModalStyle.title}>
+                      TV :<span>{modalContent.original_name}</span>
+                    </div>
+                    <span>Description :</span>
                     <p>{modalContent.overview}</p>
-                    {/* <p><span style={{fontWeight:'500'}}> Duration</span> : {modalContent?.episode_run_time[0]}</p> */}
                     <span
                       style={{
                         fontSize: "1rem",
@@ -160,15 +166,16 @@ const Modal = ({ content, setToggleModal, toggleModal }) => {
                           );
                         })
                       : null}
-                    <div>Ratings : {modalContent.vote_average}</div>
-                    <div>Release Date : {modalContent.first_air_date}</div>
+                    <div className={ModalStyle.ratings}>
+                      Ratings : <p> {modalContent.vote_average}</p>
+                    </div>
+                    <div className={ModalStyle.date}>
+                      Release Date :<p>{modalContent.first_air_date}</p>
+                    </div>
                   </div>
                 </div>
               </div>
             )}
-            <div className={ModalStyle.title}>
-              TV - {modalContent.original_name}
-            </div>
           </div>
         </div>
       )}

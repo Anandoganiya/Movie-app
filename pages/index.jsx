@@ -28,7 +28,7 @@ export default function Home({ toggleModal, setToggleModal, setContent }) {
     <main className={TrendingStyle.movieLayout}>
       <div className={TrendingStyle.title}>Trending</div>
       {!trending.length ? (
-        <div style={{ display: "flex", justifyContent: "space-center" }}>
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <ClipLoader></ClipLoader>
         </div>
       ) : (
